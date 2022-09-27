@@ -9,13 +9,15 @@ const fs = require('fs');
 
 const app = express()
 
-var corOptions = {
-    origin: "https://localhost:8081"
-}
+// var corOptions = {
+//     origin: "https://localhost:8081"
+// }
 
 // middelware
+app.use(cors({
+  origin: 'http://178.128.165.110:8080'
+}));
 
-app.use(cors())
 app.use(express.json())
 app.use(express.urlencoded({ extended: true}))
 
@@ -71,7 +73,7 @@ async function xlsxFile(file) {
   await wb.toFileAsync("newGsdExcel.xlsx");
 }
 
-  app.post('/api/upload/excelFile',upload.single('file')  ,function (req, res) {
+  app.post('/api/upload/excelFile',cors(),upload.single('file')  ,function (req, res) {
     // console.log("my_file_is",req.file.mimetype);
     console.log("file_originalname======",req.file.originalname);
     // console.log("ammmaaaad",req.body.user);
