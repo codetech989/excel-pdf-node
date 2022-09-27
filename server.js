@@ -82,7 +82,7 @@ async function xlsxFile(file) {
 
     return res.json({
         message: "File submitted Successfully",
-        url: "http://178.128.165.110:8080/ND-Pak-Node/newGsdExcel.xlsx"
+        url: "http://178.128.165.110:8080/newGsdExcel.xlsx"
       });
 
     // const fileLocation = req.file.path;
